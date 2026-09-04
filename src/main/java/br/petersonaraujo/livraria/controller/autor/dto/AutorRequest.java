@@ -1,4 +1,4 @@
-package br.petersonaraujo.livraria.controller.dto;
+package br.petersonaraujo.livraria.controller.autor.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

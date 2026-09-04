@@ -1,6 +1,8 @@
-package br.petersonaraujo.livraria.model;
+package br.petersonaraujo.livraria.model.livro;
 
-import br.petersonaraujo.livraria.model.enums.Categoria;
+import br.petersonaraujo.livraria.model.autor.AutorEntity;
+import br.petersonaraujo.livraria.model.autor.EditoraEntity;
+import br.petersonaraujo.livraria.model.autor.enums.Categoria;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
