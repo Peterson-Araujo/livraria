@@ -47,7 +47,7 @@ public class LivroEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "livro_autor",
+            name = "tb_livro_autor",
             joinColumns = @JoinColumn(name = "livro_id"),
             inverseJoinColumns = @JoinColumn(name = "autor_id")
     )

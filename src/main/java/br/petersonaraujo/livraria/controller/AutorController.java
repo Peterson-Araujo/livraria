@@ -4,6 +4,7 @@ import br.petersonaraujo.livraria.controller.dto.AutorRequest;
 import br.petersonaraujo.livraria.controller.dto.AutorResponse;
 import br.petersonaraujo.livraria.controller.mapper.AutorMapper;
 import br.petersonaraujo.livraria.service.AutorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class AutorController {
     private final AutorMapper mapper;
 
     @PostMapping
-    public ResponseEntity<AutorResponse> salvarAutor(@RequestBody AutorRequest autorRequest) {
+    public ResponseEntity<AutorResponse> salvarAutor(@RequestBody @Valid AutorRequest autorRequest) {
         var autorSalvo = autorService.salvarAutor(mapper.toEntity(autorRequest));
 
         return ResponseEntity.ok(mapper.toResponse(autorSalvo));
