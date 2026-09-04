@@ -1,6 +1,7 @@
 package br.petersonaraujo.livraria.service;
 
-import br.petersonaraujo.livraria.exception.NegocioException;
+import br.petersonaraujo.livraria.exception.domain.EntidadeNaoEncontradaException;
+import br.petersonaraujo.livraria.exception.domain.NegocioException;
 import br.petersonaraujo.livraria.model.AutorEntity;
 import br.petersonaraujo.livraria.repository.AutorRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +21,10 @@ public class AutorService {
                 });
 
         return autorRepository.save(autorEntity);
+    }
+
+    public AutorEntity buscarAutorPorId(Long id) {
+        return autorRepository.findById(id)
+                .orElseThrow(() -> new EntidadeNaoEncontradaException("Autor não encontrado"));
     }
 }

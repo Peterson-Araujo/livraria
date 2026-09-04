@@ -1,5 +1,7 @@
 package br.petersonaraujo.livraria.exception;
 
+import br.petersonaraujo.livraria.exception.domain.EntidadeNaoEncontradaException;
+import br.petersonaraujo.livraria.exception.domain.NegocioException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -42,6 +44,20 @@ public class GlobalExceptionHandler {
                 "Regra de Negócio Violada",
                 ex.getMessage(),
                 null // Não há campos específicos falhando na validação sintática
+        );
+
+        return ResponseEntity.status(status).body(erroResposta);
+    }
+
+    @ExceptionHandler(EntidadeNaoEncontradaException.class)
+    public ResponseEntity<ErroResposta> handleEntidadeNaoEncontradaException(EntidadeNaoEncontradaException ex) {
+        HttpStatus status = HttpStatus.NOT_FOUND; // Retorna Status 404
+
+        ErroResposta erroResposta = new ErroResposta(
+                status.value(),
+                "Recurso Não Encontrado",
+                ex.getMessage(),
+                null
         );
 
         return ResponseEntity.status(status).body(erroResposta);

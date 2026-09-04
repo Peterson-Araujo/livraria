@@ -1,4 +1,4 @@
-package br.petersonaraujo.livraria.exception;
+package br.petersonaraujo.livraria.exception.domain;
 
 public class NegocioException extends RuntimeException {
     public NegocioException(String message) {
