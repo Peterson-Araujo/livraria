@@ -26,5 +26,4 @@ public class AutorEntity {
 
     @ManyToMany(mappedBy = "autor")
     private List<LivroEntity> livros;
-
 }
