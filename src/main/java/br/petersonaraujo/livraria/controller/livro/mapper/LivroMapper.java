@@ -1,5 +1,6 @@
 package br.petersonaraujo.livraria.controller.livro.mapper;
 
+import br.petersonaraujo.livraria.controller.livro.dto.LivroRequest;
 import br.petersonaraujo.livraria.controller.livro.dto.LivroResponse;
 import br.petersonaraujo.livraria.model.livro.LivroEntity;
 import org.mapstruct.Mapper;
@@ -13,4 +14,6 @@ public interface LivroMapper {
 
     @Mapping(source = "editora.nome", target = "editora")
     LivroResponse toResponse(LivroEntity livroEntity);
+
+    LivroEntity toModel(LivroRequest livroRequest);
 }

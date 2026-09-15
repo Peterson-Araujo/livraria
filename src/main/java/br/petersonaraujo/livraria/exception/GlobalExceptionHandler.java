@@ -1,5 +1,6 @@
 package br.petersonaraujo.livraria.exception;
 
+import br.petersonaraujo.livraria.exception.domain.AutorNaoInformadoException;
 import br.petersonaraujo.livraria.exception.domain.EntidadeNaoEncontradaException;
 import br.petersonaraujo.livraria.exception.domain.NegocioException;
 import org.springframework.http.HttpStatus;
@@ -51,11 +52,25 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EntidadeNaoEncontradaException.class)
     public ResponseEntity<ErroResposta> handleEntidadeNaoEncontradaException(EntidadeNaoEncontradaException ex) {
-        HttpStatus status = HttpStatus.NOT_FOUND; // Retorna Status 404
+        HttpStatus status = HttpStatus.NOT_FOUND;
 
         ErroResposta erroResposta = new ErroResposta(
                 status.value(),
                 "Recurso Não Encontrado",
+                ex.getMessage(),
+                null
+        );
+
+        return ResponseEntity.status(status).body(erroResposta);
+    }
+
+    @ExceptionHandler(AutorNaoInformadoException.class)
+    public ResponseEntity<ErroResposta> handlerAutorNaoEncontradoException(AutorNaoInformadoException ex) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        ErroResposta erroResposta = new ErroResposta(
+                status.value(),
+                "O autor deve ser informado.",
                 ex.getMessage(),
                 null
         );
