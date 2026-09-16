@@ -1,4 +1,4 @@
-package br.petersonaraujo.livraria.model.autor.enums;
+package br.petersonaraujo.livraria.model.enums;
 
 public enum Categoria {
 

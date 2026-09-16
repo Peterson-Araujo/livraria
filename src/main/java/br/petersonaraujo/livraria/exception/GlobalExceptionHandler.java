@@ -1,8 +1,6 @@
 package br.petersonaraujo.livraria.exception;
 
-import br.petersonaraujo.livraria.exception.domain.AutorNaoInformadoException;
-import br.petersonaraujo.livraria.exception.domain.EntidadeNaoEncontradaException;
-import br.petersonaraujo.livraria.exception.domain.NegocioException;
+import br.petersonaraujo.livraria.exception.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -65,12 +63,40 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(AutorNaoInformadoException.class)
-    public ResponseEntity<ErroResposta> handlerAutorNaoEncontradoException(AutorNaoInformadoException ex) {
+    public ResponseEntity<ErroResposta> handlerAutorNaoInformadoException(AutorNaoInformadoException ex) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         ErroResposta erroResposta = new ErroResposta(
                 status.value(),
                 "O autor deve ser informado.",
+                ex.getMessage(),
+                null
+        );
+
+        return ResponseEntity.status(status).body(erroResposta);
+    }
+
+    @ExceptionHandler(EditoraNaoInformadaExecption.class)
+    public ResponseEntity<ErroResposta> handlerEditoraNaoInformadaException(EditoraNaoInformadaExecption ex) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        ErroResposta erroResposta = new ErroResposta(
+                status.value(),
+                "A editora deve ser informada.",
+                ex.getMessage(),
+                null
+        );
+
+        return ResponseEntity.status(status).body(erroResposta);
+    }
+
+    @ExceptionHandler(EditoraNaoEncontradaException.class)
+    public ResponseEntity<ErroResposta> handlerEditoraNaoEncontradaException(EditoraNaoEncontradaException ex) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        ErroResposta erroResposta = new ErroResposta(
+                status.value(),
+                "A editora não foi encontrada.",
                 ex.getMessage(),
                 null
         );

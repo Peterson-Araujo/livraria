@@ -1,7 +1,6 @@
 package br.petersonaraujo.livraria.controller.livro.dto;
 
-import br.petersonaraujo.livraria.controller.editora.dto.EditoraRequest;
-import br.petersonaraujo.livraria.model.autor.enums.Categoria;
+import br.petersonaraujo.livraria.model.enums.Categoria;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +24,13 @@ public record LivroRequest(
     @AllArgsConstructor
     @NoArgsConstructor
     public static class AutorRequest{
+        private Long id;
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class EditoraRequest {
         private Long id;
     }
 }

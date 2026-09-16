@@ -1,4 +1,4 @@
-package br.petersonaraujo.livraria.model.autor;
+package br.petersonaraujo.livraria.model.editora;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
