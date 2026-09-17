@@ -1,13 +1,14 @@
 package br.petersonaraujo.livraria.controller.autor.dto;
 
-import br.petersonaraujo.livraria.controller.livro.dto.LivroResponse;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-public record AutorResponse(
+public record AutorResponse (
         Long id,
         String nome,
-        String biografia,
-        List<LivroResponse> livros
+        String biografia
 ) {
 }

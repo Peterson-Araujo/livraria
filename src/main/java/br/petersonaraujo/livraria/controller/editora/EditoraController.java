@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class EditoraController {
     private final EditoraMapper mapper;
 
     @PostMapping
-    public ResponseEntity<EditoraResponse> salvarEditora(EditoraRequest editoraRequest) {
+    public ResponseEntity<EditoraResponse> salvarEditora(@RequestBody EditoraRequest editoraRequest) {
         var editoraSalva = editoraService.salvarEditora(mapper.toModel(editoraRequest));
 
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(editoraSalva));
