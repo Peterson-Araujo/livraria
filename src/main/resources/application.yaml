@@ -12,12 +12,14 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+    defer-datasource-initialization: true
 
   sql:
     init:
       mode: always
+      data-locations: classpath:db/SQL-INSERT-AUTORES.sql,classpath:db/SQL-INSERT-EDITORAS.sql
