@@ -33,8 +33,8 @@ public class AutorController {
         return ResponseEntity.ok(mapper.toResponse(autorService.buscarAutorPorId(id)));
     }
 
-    @GetMapping
-    public ResponseEntity<List<AutorResponse>> listarAutores(@RequestParam String nome){
+    @GetMapping(params = "nome")
+    public ResponseEntity<List<AutorResponse>> listarAutoresPorNome(@RequestParam String nome) {
         var autores = autorService.listarAutoresPorNome(nome);
 
         return ResponseEntity.ok(
@@ -42,6 +42,11 @@ public class AutorController {
                         .map(mapper::toResponse)
                         .toList()
         );
+    }
+
+    @GetMapping
+    public ResponseEntity<List<AutorResponse>> listarAutores() {
+        return ResponseEntity.ok(autorService.listarAutores().stream().map(mapper::toResponse).toList());
     }
 
     @PutMapping("/{id}")

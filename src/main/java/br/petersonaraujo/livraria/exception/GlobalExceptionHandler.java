@@ -13,12 +13,10 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // 1. Captura erros do @Size, @NotBlank, etc. (Retorna 400)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErroResposta> handleValidationExceptions(MethodArgumentNotValidException ex) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
-        // Transforma a lista de erros do Spring na lista personalizada
         List<ErroResposta.CampoErro> camposComErro = ex.getBindingResult().getFieldErrors().stream()
                 .map(error -> new ErroResposta.CampoErro(error.getField(), error.getDefaultMessage()))
                 .collect(Collectors.toList());
@@ -33,16 +31,15 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(erroResposta);
     }
 
-    // 2. Captura erros de regras de negócio personalizados (Retorna 422 ou 400)
-    @ExceptionHandler(NegocioException.class)
-    public ResponseEntity<ErroResposta> handleNegocioException(NegocioException ex) {
+    @ExceptionHandler(ErroNegocioException.class)
+    public ResponseEntity<ErroResposta> handleNegocioException(ErroNegocioException ex) {
         HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY; // Código 422 é ótimo para regras de negócio
 
         ErroResposta erroResposta = new ErroResposta(
                 status.value(),
                 "Regra de Negócio Violada",
                 ex.getMessage(),
-                null // Não há campos específicos falhando na validação sintática
+                null
         );
 
         return ResponseEntity.status(status).body(erroResposta);
@@ -62,41 +59,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(erroResposta);
     }
 
-    @ExceptionHandler(AutorNaoInformadoException.class)
-    public ResponseEntity<ErroResposta> handlerAutorNaoInformadoException(AutorNaoInformadoException ex) {
+    @ExceptionHandler(EntidadeNaoInformadaException.class)
+    public ResponseEntity<ErroResposta> handlerAutorNaoInformadoException(EntidadeNaoInformadaException ex) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
         ErroResposta erroResposta = new ErroResposta(
                 status.value(),
-                "O autor deve ser informado.",
-                ex.getMessage(),
-                null
-        );
-
-        return ResponseEntity.status(status).body(erroResposta);
-    }
-
-    @ExceptionHandler(EditoraNaoInformadaExecption.class)
-    public ResponseEntity<ErroResposta> handlerEditoraNaoInformadaException(EditoraNaoInformadaExecption ex) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
-
-        ErroResposta erroResposta = new ErroResposta(
-                status.value(),
-                "A editora deve ser informada.",
-                ex.getMessage(),
-                null
-        );
-
-        return ResponseEntity.status(status).body(erroResposta);
-    }
-
-    @ExceptionHandler(EditoraNaoEncontradaException.class)
-    public ResponseEntity<ErroResposta> handlerEditoraNaoEncontradaException(EditoraNaoEncontradaException ex) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
-
-        ErroResposta erroResposta = new ErroResposta(
-                status.value(),
-                "A editora não foi encontrada.",
+                "O recurso deve ser informado.",
                 ex.getMessage(),
                 null
         );

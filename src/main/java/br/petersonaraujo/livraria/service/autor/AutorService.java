@@ -1,7 +1,7 @@
 package br.petersonaraujo.livraria.service.autor;
 
 import br.petersonaraujo.livraria.exception.domain.EntidadeNaoEncontradaException;
-import br.petersonaraujo.livraria.exception.domain.NegocioException;
+import br.petersonaraujo.livraria.exception.domain.ErroNegocioException;
 import br.petersonaraujo.livraria.model.autor.AutorEntity;
 import br.petersonaraujo.livraria.repository.autor.AutorRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class AutorService {
 
         autorRepository.findByNome(autorEntity.getNome())
                 .ifPresent(autor -> {
-                    throw new NegocioException(MSG_AUTOR_JA_CADASTRADO);
+                    throw new ErroNegocioException(MSG_AUTOR_JA_CADASTRADO);
                 });
 
         return autorRepository.save(autorEntity);
@@ -37,23 +37,24 @@ public class AutorService {
         return autorRepository.findByNomeContainingIgnoreCase(nome);
     }
 
+    public List<AutorEntity> listarAutores() {
+        return autorRepository.findAll();
+    }
+
     public AutorEntity atualizarAutorPorId(Long id, AutorEntity entity) {
-        return autorRepository.findById(id)
-                .map(autor ->  {
-                    autor.setNome(entity.getNome());
-                    autor.setBiografia(entity.getBiografia());
-                    autorRepository.save(autor);
-                    return autor;
-                })
-                .orElseThrow(() -> new EntidadeNaoEncontradaException(MSG_AUTOR_NAO_ENCONTRADO));
+
+        var autorEncontrado = buscarAutorPorId(id);
+
+        autorEncontrado.setNome(entity.getNome());
+        autorEncontrado.setBiografia(entity.getBiografia());
+
+        return autorRepository.save(autorEncontrado);
     }
 
     public void removerAutorPorId(Long id) {
-        autorRepository.findById(id)
-                .map(autorEntity ->  {
-                    autorRepository.delete(autorEntity);
-                    return autorEntity;
-                })
-                .orElseThrow(() -> new EntidadeNaoEncontradaException(MSG_AUTOR_NAO_ENCONTRADO));
+
+        var autorEncontrado = buscarAutorPorId(id);
+
+        autorRepository.delete(autorEncontrado);
     }
 }
