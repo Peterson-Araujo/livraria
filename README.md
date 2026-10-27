@@ -97,7 +97,14 @@ Isso evita a necessidade de realizar conversões manualmente dentro dos controll
 * Listagem de autores
 * Atualização de autor
 * Exclusão de autor
-* Associação de livros aos autores
+
+### Editoras
+
+* Cadastro de editoras
+* Consulta de editora
+* Listagem de editoras
+* Atualização de editoras
+* Exclusão de editoras
 
 ### Livros
 

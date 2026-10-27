@@ -1,9 +1,6 @@
 package br.petersonaraujo.livraria.service.livro;
 
-import br.petersonaraujo.livraria.controller.autor.mapper.AutorMapper;
-import br.petersonaraujo.livraria.controller.editora.mapper.EditoraMapper;
 import br.petersonaraujo.livraria.controller.livro.dto.LivroRequest;
-import br.petersonaraujo.livraria.controller.livro.dto.LivroResponse;
 import br.petersonaraujo.livraria.exception.domain.EntidadeNaoEncontradaException;
 import br.petersonaraujo.livraria.exception.domain.EntidadeNaoInformadaException;
 import br.petersonaraujo.livraria.model.autor.AutorEntity;
@@ -14,7 +11,6 @@ import br.petersonaraujo.livraria.repository.livro.LivroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
