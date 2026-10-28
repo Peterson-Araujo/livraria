@@ -16,11 +16,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/autor")
 @RequiredArgsConstructor
-public class AutorController {
+public class AutorControllerImpl implements IAutorController {
 
     private final AutorService autorService;
     private final AutorMapper mapper;
 
+    @Override
     @PostMapping
     public ResponseEntity<AutorCriadoResponse> salvarAutor(@RequestBody @Valid AutorRequest autorRequest) {
         var autorSalvo = autorService.salvarAutor(mapper.toEntity(autorRequest));
@@ -28,36 +29,38 @@ public class AutorController {
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toCreatedResponse(autorSalvo));
     }
 
+    @Override
     @GetMapping("/{id}")
-    public ResponseEntity<AutorResponse> buscarAutorPorId(@PathVariable Long id){
+    public ResponseEntity<AutorResponse> buscarAutorPorId(@PathVariable Long id) {
         return ResponseEntity.ok(mapper.toResponse(autorService.buscarAutorPorId(id)));
     }
 
+    @Override
     @GetMapping(params = "nome")
     public ResponseEntity<List<AutorResponse>> listarAutoresPorNome(@RequestParam String nome) {
         var autores = autorService.listarAutoresPorNome(nome);
 
-        return ResponseEntity.ok(
-                autores.stream()
-                        .map(mapper::toResponse)
-                        .toList()
-        );
+        return ResponseEntity.ok(autores.stream().map(mapper::toResponse).toList());
     }
 
+    @Override
     @GetMapping
     public ResponseEntity<List<AutorResponse>> listarAutores() {
         return ResponseEntity.ok(autorService.listarAutores().stream().map(mapper::toResponse).toList());
     }
 
+    @Override
     @PutMapping("/{id}")
-    public ResponseEntity<AutorResponse> atualizarAutor(@PathVariable Long id, @RequestBody @Valid AutorRequest autorRequest){
+    public ResponseEntity<AutorResponse> atualizarAutor(@PathVariable Long id,
+                                                        @RequestBody @Valid AutorRequest autorRequest) {
         var autorAtualizado = autorService.atualizarAutorPorId(id, mapper.toEntity(autorRequest));
 
         return ResponseEntity.ok().body(mapper.toResponse(autorAtualizado));
     }
 
+    @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> removerAutor(@PathVariable Long id){
+    public ResponseEntity<Void> removerAutor(@PathVariable Long id) {
         autorService.removerAutorPorId(id);
         return ResponseEntity.noContent().build();
     }
