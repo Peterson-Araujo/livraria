@@ -1,6 +1,6 @@
-package br.petersonaraujo.livraria.repository.pedido;
+package br.petersonaraujo.livraria.repository.cliente;
 
-import br.petersonaraujo.livraria.model.pedido.ClienteEntity;
+import br.petersonaraujo.livraria.model.cliente.ClienteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

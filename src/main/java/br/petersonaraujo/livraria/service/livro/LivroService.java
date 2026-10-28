@@ -79,7 +79,7 @@ public class LivroService {
         livroEncontrado.setPreco(livroRequest.preco());
         livroEncontrado.setEstoque(livroRequest.estoque());
         livroEncontrado.setAnoPublicacao(livroRequest.anoPublicacao());
-        livroEncontrado.setCategoria(livroRequest.categoria());
+        livroEncontrado.setEnumCategoria(livroRequest.enumCategoria());
 
         var editoraEncontrada = editoraRepository.findById(livroRequest.editora().getId())
                         .orElseThrow(() -> new EntidadeNaoEncontradaException(MSG_EDITORA_NAO_ENCONTRADA));

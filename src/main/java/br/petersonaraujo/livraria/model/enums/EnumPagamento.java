@@ -1,4 +1,4 @@
-package br.petersonaraujo.livraria.model.pedido.enums;
+package br.petersonaraujo.livraria.model.enums;
 
 public enum EnumPagamento {
     CARTAO_CREDITO,

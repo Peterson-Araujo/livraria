@@ -1,4 +1,4 @@
-package br.petersonaraujo.livraria.controller.pedido.dto;
+package br.petersonaraujo.livraria.controller.cliente.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

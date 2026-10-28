@@ -1,7 +1,7 @@
-package br.petersonaraujo.livraria.controller.pedido.mapper;
+package br.petersonaraujo.livraria.controller.cliente.mapper;
 
-import br.petersonaraujo.livraria.controller.pedido.dto.ClienteDTO;
-import br.petersonaraujo.livraria.model.pedido.ClienteEntity;
+import br.petersonaraujo.livraria.controller.cliente.dto.ClienteDTO;
+import br.petersonaraujo.livraria.model.cliente.ClienteEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

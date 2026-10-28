@@ -1,9 +1,9 @@
-package br.petersonaraujo.livraria.service.pedido;
+package br.petersonaraujo.livraria.service.cliente;
 
 import br.petersonaraujo.livraria.exception.domain.EntidadeNaoEncontradaException;
 import br.petersonaraujo.livraria.exception.domain.ErroNegocioException;
-import br.petersonaraujo.livraria.model.pedido.ClienteEntity;
-import br.petersonaraujo.livraria.repository.pedido.ClienteRepository;
+import br.petersonaraujo.livraria.model.cliente.ClienteEntity;
+import br.petersonaraujo.livraria.repository.cliente.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

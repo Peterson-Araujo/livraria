@@ -1,6 +1,6 @@
 package br.petersonaraujo.livraria.model.enums;
 
-public enum Categoria {
+public enum EnumCategoria {
     ACAO,
     AVENTURA,
     DRAMA,

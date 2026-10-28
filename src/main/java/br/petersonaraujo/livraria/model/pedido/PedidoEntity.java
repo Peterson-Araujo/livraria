@@ -1,7 +1,8 @@
 package br.petersonaraujo.livraria.model.pedido;
 
-import br.petersonaraujo.livraria.model.pedido.enums.EnumPagamento;
-import br.petersonaraujo.livraria.model.pedido.enums.EnumStatus;
+import br.petersonaraujo.livraria.model.cliente.ClienteEntity;
+import br.petersonaraujo.livraria.model.enums.EnumPagamento;
+import br.petersonaraujo.livraria.model.enums.EnumStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

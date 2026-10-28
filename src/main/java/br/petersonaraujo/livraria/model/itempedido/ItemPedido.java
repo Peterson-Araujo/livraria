@@ -1,5 +1,6 @@
-package br.petersonaraujo.livraria.model.pedido;
+package br.petersonaraujo.livraria.model.itempedido;
 
+import br.petersonaraujo.livraria.model.pedido.PedidoEntity;
 import br.petersonaraujo.livraria.model.livro.LivroEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

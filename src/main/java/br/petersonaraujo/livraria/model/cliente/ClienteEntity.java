@@ -1,4 +1,4 @@
-package br.petersonaraujo.livraria.model.pedido;
+package br.petersonaraujo.livraria.model.cliente;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

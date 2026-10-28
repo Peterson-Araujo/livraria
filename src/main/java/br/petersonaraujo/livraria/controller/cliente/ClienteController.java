@@ -1,8 +1,8 @@
-package br.petersonaraujo.livraria.controller.pedido;
+package br.petersonaraujo.livraria.controller.cliente;
 
-import br.petersonaraujo.livraria.controller.pedido.dto.ClienteDTO;
-import br.petersonaraujo.livraria.controller.pedido.mapper.ClienteMapper;
-import br.petersonaraujo.livraria.service.pedido.ClienteService;
+import br.petersonaraujo.livraria.controller.cliente.dto.ClienteDTO;
+import br.petersonaraujo.livraria.controller.cliente.mapper.ClienteMapper;
+import br.petersonaraujo.livraria.service.cliente.ClienteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

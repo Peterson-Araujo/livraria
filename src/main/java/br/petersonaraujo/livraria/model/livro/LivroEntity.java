@@ -2,7 +2,7 @@ package br.petersonaraujo.livraria.model.livro;
 
 import br.petersonaraujo.livraria.model.autor.AutorEntity;
 import br.petersonaraujo.livraria.model.editora.EditoraEntity;
-import br.petersonaraujo.livraria.model.enums.Categoria;
+import br.petersonaraujo.livraria.model.enums.EnumCategoria;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,7 +45,7 @@ public class LivroEntity {
     private EditoraEntity editora;
 
     @Enumerated(EnumType.STRING)
-    private Categoria categoria;
+    private EnumCategoria enumCategoria;
 
     @ManyToMany
     @JoinTable(

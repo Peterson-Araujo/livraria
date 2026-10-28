@@ -1,6 +1,6 @@
 package br.petersonaraujo.livraria.controller.livro.dto;
 
-import br.petersonaraujo.livraria.model.enums.Categoria;
+import br.petersonaraujo.livraria.model.enums.EnumCategoria;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ public record LivroRequest(
         BigDecimal preco,
         int estoque,
         int anoPublicacao,
-        Categoria categoria,
+        EnumCategoria enumCategoria,
         EditoraRequest editora,
         List<AutorRequest> autor
 ) {
